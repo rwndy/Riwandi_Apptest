@@ -1,6 +1,7 @@
 import * as React from 'react';
-import {View} from 'react-native';
 import Router from './routing';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 const AppNavigation = () => {
   return (
@@ -12,9 +13,9 @@ const AppNavigation = () => {
 
 const App = () => {
   return (
-    <>
+    <Provider store={store}>
       <AppNavigation />
-    </>
+    </Provider>
   );
 };
 

@@ -1,3 +1,4 @@
 import HomeScreen from './Home';
+import CreateContact from './CreateContact';
 
-export {HomeScreen};
+export {HomeScreen, CreateContact};
