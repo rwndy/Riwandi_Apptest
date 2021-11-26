@@ -10,8 +10,6 @@ const HomeScreen = () => {
 
   const { data: contacts } = useSWR(URL_API, fetcher);
 
-  console.log('fetch', contacts?.data)
-
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor={'#3282B8'} translucent />
@@ -22,7 +20,7 @@ const HomeScreen = () => {
           <FlatList 
             data={contacts?.data}
             renderItem={({item}) => (
-              <ListContacts name={item?.firstName} avatar={item?.photo} age={item?.age} />
+              <ListContacts name={item?.firstName} avatar={item?.photo} age={item?.age} id={item?.id} />
             )}
             keyExtractor={item => item.id}
           />
