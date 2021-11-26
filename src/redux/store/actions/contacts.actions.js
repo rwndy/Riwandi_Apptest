@@ -61,6 +61,7 @@ export const updateContact = (fields, id) => async dispatch => {
     dispatch({type: REQUEST_UPDATE_DATA})
     const response = await axios.put(`${url}/${id}`, fields)
     const result = response.data
+    console.log('result', result)
     dispatch({type: UPDATE_DATA, payload: result})
   } catch (error) {
     dispatch({type: UPDATE_DATA_FAILED})
