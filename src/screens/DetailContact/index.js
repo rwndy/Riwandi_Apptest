@@ -1,7 +1,7 @@
 /* eslint-disable eol-last */
 /* eslint-disable prettier/prettier */
 import React, { useEffect, useState } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { getContactByID } from '../../redux/store/actions';
 import { useForm, Controller } from "react-hook-form";
@@ -10,7 +10,7 @@ import { updateContact, deleteContact } from '../../redux/store/actions';
 import { useNavigation } from '@react-navigation/native';
 
 const DetailContact = ({route}) => {
-  const {id} = route.params;
+  const id = route?.params?.id;
   const dispatch = useDispatch();
   const { dataById } = useSelector(state => state.contacts);
   const [action, setAction] = useState(null);
@@ -37,7 +37,6 @@ const DetailContact = ({route}) => {
   }, [id, dispatch]);
 
   const onHandleEdit = (data) => {
-    console.log('data', data)
     setAction('update');
     setValue('firstName', data?.firstName);
     setValue('lastName', data?.lastName);
@@ -62,6 +61,7 @@ const DetailContact = ({route}) => {
   const onDelete = () => {
     dispatch(deleteContact(id));
     navigation.navigate('Home');
+    Alert.alert('Contact berhasil dihapus');
   };
 
   return (
